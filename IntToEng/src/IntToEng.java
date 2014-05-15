@@ -32,7 +32,7 @@ public class IntToEng {
 			if(n%10!=0) s+= a[n%10];
 			return s;
 		}
-		else if(1000<=	n && n<10000){
+		else if(1000<=	n && n<=10000){
 			s = a[n/1000] + c[1];
 			if(n%1000!=0 && n%1000/100!=0){
 				s += a[n%1000/100] + c[0];
@@ -48,6 +48,27 @@ public class IntToEng {
 				}
 			}
 			return s;
+		}
+		else if(10000<n && n<100000){
+			s = b[n/10000] + c[1];
+			n = n - (n/10000)*10000;
+			
+			if(1000<=n && n<10000)s = a[n/1000] + c[1];
+			if(n%1000!=0 && n%1000/100!=0){
+				s += a[n%1000/100] + c[0];
+			}
+			if(n%100!=0){
+				n = n%100;
+				if(n<20){
+					s+=a[n];
+				}
+				else{
+					s+= b[n/10];
+					if(n%10!=0) s+= a[n%10];
+				}
+			}
+			return s;
+			
 		}
 		else return "‚¿‚å‚Á‚Æ‘Ò‚Á‚Ä‚Ë";
 	}
